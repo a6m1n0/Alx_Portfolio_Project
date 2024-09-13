@@ -88,7 +88,7 @@ The **Secure Online Voting System** is a web application that allows users to pa
 1. **Clone the Repository**
 
 ```bash
-   git clone https://github.com/yourusername/secure_online_voting_system.git
+   git clone https://github.com/yourusername/Alx_Portfolio_Project.git
 
 ```
 
@@ -104,18 +104,14 @@ cd secure_online_voting_system
 
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+source venv/bin/activate  
 ```
 
 ## Install Dependencies
 
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
-
-## Configure Environment Variables
-
-Rename `.env.example` to `.env` and update the configuration settings such as database credentials and secret keys.
 
 ## Initialize the Database
 
