@@ -88,7 +88,7 @@ The **Secure Online Voting System** is a web application that allows users to pa
 1. **Clone the Repository**
 
 ```bash
-   git clone https://github.com/yourusername/Alx_Portfolio_Project.git
+   git clone https://github.com/a6m1n0/Alx_Portfolio_Project.git
 
 ```
 
@@ -97,14 +97,14 @@ The **Secure Online Voting System** is a web application that allows users to pa
 ## Navigate to the Project Directory
 
 ```bash
-cd Alx_Portfolio_Project
+cd secure_online_voting_system
 ```
 
 ## Create a Virtual Environment
 
 ```bash
 python -m venv venv
-source venv/bin/activate  
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 ```
 
 ## Install Dependencies
@@ -148,7 +148,7 @@ Alx_Portfolio_Project/
 │   │   ├── candidate.py
 │   │   ├── vote.py
 │   │   └── audit_log.py
-│   ├── routes/
+│   ├── api/
 │   │   ├── __init__.py
 │   │   ├── auth.py
 │   │   ├── election.py
@@ -176,14 +176,6 @@ Alx_Portfolio_Project/
 ├── migrations/
 │   ├── versions/
 │   └── alembic.ini
-├── tests/
-│   ├── __init__.py
-│   ├── test_auth.py
-│   ├── test_election.py
-│   ├── test_candidate.py
-│   └── test_vote.py
-├── .env
-├── .gitignore
 ├── requirements.txt
 └── run.py
 ```
@@ -191,17 +183,17 @@ Alx_Portfolio_Project/
 ## Application Architecture
 
 ```plaintext
-+--------------------------------------------+
-|                   Flask App                |
-|                                            |
-| +------------+     +------------------+    |
-| | Blueprints |     |     Services     |    |
-| +------+-----+     +---------+--------+    |
++-------------------------------------------+
+|                Flask App                  |
+|                                           |
+| +------------+     +------------------+   |
+| | Blueprints |     |     Services     |   |
+| +------+-----+     +---------+--------+   |
 |        |                    |             |
 |        |                    |             |
 |        v                    v             |
 |  +-----------+     +-------------------+  |
-|  |  Routes   |     |     Repository    |  |
+|  |    API    |     |     Repository    |  |
 |  +-----+-----+     +---------+---------+  |
 |        |                    |             |
 |        v                    v             |
@@ -210,10 +202,10 @@ Alx_Portfolio_Project/
 |  +------------+      +------+-----+       |
 |                              |            |
 |                              v            |
-|                         +---------+       |
-|                         |  Database |     |
-|                         +---------+       |
-+--------------------------------------------+
+|                         +----------+      |
+|                         | Database |      |
+|                         +----------+      |
++-------------------------------------------+
 ```
 
 - **Blueprints**: Modularize the application routes.
