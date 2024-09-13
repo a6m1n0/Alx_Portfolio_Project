@@ -27,14 +27,14 @@ class AuthService:
         user : User
             The User object representing the new user.
         """
-        if User.query.filter_by(email=email).first():
+        if User.query.filter_by(email=kwargs.email).first():
             return {"status": "error", "message": "Email already exists"}
 
-        if User.query.filter_by(username=username).first():
+        if User.query.filter_by(username=kwargs.username).first():
             return {"status": "error", "message": "User already exists"}
 
-        user = User(username=username, email=email)
-        user.set_password = password
+        user = User(**kwargs)
+        user.set_password = kwargs.password
 
         db.session.add(user)
         db.session.commit()
