@@ -97,7 +97,7 @@ The **Secure Online Voting System** is a web application that allows users to pa
 ## Navigate to the Project Directory
 
 ```bash
-cd secure_online_voting_system
+cd Alx_Portfolio_Project
 ```
 
 ## Create a Virtual Environment
@@ -136,7 +136,7 @@ Navigate to `http://localhost:5000` in your web browser or use a tool like Postm
 ## Directory Structure
 
 ```plaintext
-secure_online_voting_system/
+Alx_Portfolio_Project/
 │
 ├── app/
 │   ├── __init__.py
