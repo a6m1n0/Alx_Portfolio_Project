@@ -8,6 +8,10 @@ class ElectionService:
     @staticmethod
     def create_election(title, description, start_time, end_time):
         try:
+            election = Election.query.filter_by(title=title).first()
+            if election:
+                return {"status": "error", "message": "Election already exists"}
+                
             election = Election(
                 title=title,
                 description=description,

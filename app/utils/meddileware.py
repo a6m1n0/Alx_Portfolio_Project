@@ -3,7 +3,7 @@ from flask_jwt_extended import verify_jwt_in_request, get_jwt_identity
 from flask import jsonify
 from ..models.user import User
 
-def role_required(required_roles, *args):
+def role_required(required_roles):
     """
     Role-based access control decorator.
 
@@ -18,7 +18,7 @@ def role_required(required_roles, *args):
         def wrapper(*args, **kwargs):
             verify_jwt_in_request()
             current_user = get_jwt_identity()
-            user = User.query.filter_by(username=current_user).first()
+            user = User.query.get(current_user)
 
             if user is None:
                 return jsonify({"error": "User not found"}), 404
@@ -29,3 +29,4 @@ def role_required(required_roles, *args):
             return func(*args, **kwargs)
         return wrapper
     return decorator
+

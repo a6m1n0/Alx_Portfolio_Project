@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required, get_jwt_identity
 from app.services.auth_service import AuthService
 
 auth_bp = Blueprint('auth', __name__)
@@ -10,8 +10,9 @@ def register():
     username = data.get('username')
     email = data.get('email')
     password = data.get('password')
+    role = data.get('role','voter')
 
-    result = AuthService.register_user(username, email, password)
+    result = AuthService.register_user(username, email, password, role)
 
     if result['status'] == 'success':
         return jsonify(result), 201
@@ -29,12 +30,11 @@ def login():
         return jsonify(result), 200
     return jsonify(result), 400
 
-@auth_bp.route('/logout', methods=['POST'])
+@auth_bp.route('/logout', methods=['GET'])
+@jwt_required()
 def logout():
-    data = request.get_json()
-    email = data.get('email')
-
-    result = AuthService.logout_user(email)
+    username = get_jwt_identity()
+    result = AuthService.logout_user(username)
 
     if result['status'] == 'success':
         return jsonify(result), 200

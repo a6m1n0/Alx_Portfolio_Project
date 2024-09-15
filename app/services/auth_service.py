@@ -1,12 +1,15 @@
 from app.models.user import User
 from app import db
 from flask_jwt_extended import create_access_token
+from jwt import ExpiredSignatureError
+from flask_jwt_extended import decode_token
+
 # from app.utils.security import hash_password, verify_password
 
 class AuthService:
 
     @staticmethod
-    def register_user(username, email, password):
+    def register_user(username, email, password, role):
         """
         Register a new user with the given username, email, and password.
 
@@ -27,14 +30,14 @@ class AuthService:
         user : User
             The User object representing the new user.
         """
-        if User.query.filter_by(email=kwargs.email).first():
+        if User.query.filter_by(email=email).first():
             return {"status": "error", "message": "Email already exists"}
 
-        if User.query.filter_by(username=kwargs.username).first():
+        if User.query.filter_by(username=username).first():
             return {"status": "error", "message": "User already exists"}
 
-        user = User(**kwargs)
-        user.set_password = kwargs.password
+        user = User(username=username, email=email, role=role)
+        user.set_password = password
 
         db.session.add(user)
         db.session.commit()
@@ -70,7 +73,7 @@ class AuthService:
         return {"status": "error", "message": "Invalid email or password"}
 
     @staticmethod
-    def logout_user(email):
+    def logout_user(username):
         """
         Log out a user with the given email.
 
@@ -78,8 +81,8 @@ class AuthService:
 
         Parameters:
         -----------
-        email : str
-            The email address of the user.
+        username : str
+            The username of the user
 
         Returns:
         --------
@@ -87,7 +90,7 @@ class AuthService:
             A message indicating whether the user was successfully logged out.
         """
         return {"status": "success", "message": "User logged out successfully"}
-
+            
     @staticmethod
     def get_paginated_users(page=1, per_page=10):
         users_query = User.query.paginate(page=page, per_page=per_page, error_out=False)
@@ -170,10 +173,22 @@ class AuthService:
 
         # Update the user's fields
         if username:
-            user.username = username
+            try:
+                user.username = username
+            except Exception as e:
+                return {
+                    'status': 'error',
+                    'message': str(e)
+                }
         if email:
-            user.email = email
-
+            try:
+                user.email = email
+            except Exception as e:
+                return {
+                    'status': 'error',
+                    'message': str(e)
+                }
+        
         db.session.commit()
 
         return {
@@ -262,7 +277,7 @@ class AuthService:
                 'message': 'Incorrect old password'
             }
 
-        user.set_password(new_password)
+        user.set_password = new_password
         db.session.commit()
 
         return {
