@@ -1,6 +1,7 @@
 from app.models.vote import Votes
 from app import db
 from sqlalchemy.exc import IntegrityError
+from app.models.candidate import Candidates
 
 class VoteService:
 
@@ -40,5 +41,20 @@ class VoteService:
                 "pages": votes_query.pages,
                 "current_page": votes_query.page
             }
+        except Exception as e:
+            return {"status": "error", "message": str(e)}
+    
+    def vote_result(election_id):
+        try:
+            votes = Votes.query.filter_by(election_id=election_id).all()
+            result = {}
+            for vote in votes:
+                if vote.candidate_id in result:
+                    result[vote.candidate_id] += 1
+                else:
+                    result[vote.candidate_id] = 1
+            candidate_id = max(result, key=result.get)
+            candidate_winner = Candidates.query.filter_by(id=candidate_id).first()
+            return {"status": "success", "result": result, "candidate_wins": candidate_winner.to_dict()["name"]}
         except Exception as e:
             return {"status": "error", "message": str(e)}

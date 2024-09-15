@@ -17,12 +17,8 @@ def cast_vote():
         return jsonify(result), 201
     return jsonify(result), 400
 
-@vote_bp.route('/votes', methods=['GET'])
+@vote_bp.route('/vote_result/<int:election_id>', methods=['GET'])
 @jwt_required()
-def get_votes():
-    election_id = request.args.get('election_id')
-    page = request.args.get('page', 1, type=int)
-    per_page = request.args.get('per_page', 10, type=int)
-
-    result = VoteService.get_votes(election_id, page, per_page)
+def get_vote_result(election_id):
+    result = VoteService.vote_result(election_id)
     return jsonify(result), 200
