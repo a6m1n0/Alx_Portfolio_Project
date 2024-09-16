@@ -95,7 +95,7 @@ git clone https://github.com/a6m1n0/Alx_Portfolio_Project.git
 #### 2. Navigate to the Project Directory
 
 ```bash
-cd secure_voting_system
+cd Alx_Portfolio_Project
 ```
 
 #### 3. Create a Virtual Environment
