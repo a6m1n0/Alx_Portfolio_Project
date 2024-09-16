@@ -1,8 +1,8 @@
-# Secure Online Voting System
+# Secure Voting System
 
 ## Table of Contents
 
-- [Secure Online Voting System](#secure-online-voting-system)
+- [Secure Voting System](#secure-voting-system)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Features](#features)
@@ -17,20 +17,21 @@
   - [Installation and Setup](#installation-and-setup)
     - [Prerequisites](#prerequisites)
     - [Steps](#steps)
-  - [Navigate to the Project Directory](#navigate-to-the-project-directory)
-  - [Create a Virtual Environment](#create-a-virtual-environment)
-  - [Install Dependencies](#install-dependencies)
-  - [Configure Environment Variables](#configure-environment-variables)
-  - [Initialize the Database](#initialize-the-database)
-  - [Run the Application](#run-the-application)
-  - [Access the Application](#access-the-application)
+      - [1. Clone the Repository](#1-clone-the-repository)
+      - [2. Navigate to the Project Directory](#2-navigate-to-the-project-directory)
+      - [3. Create a Virtual Environment](#3-create-a-virtual-environment)
+      - [4. Install Dependencies](#4-install-dependencies)
+      - [5. Initialize the Database](#5-initialize-the-database)
+      - [6. Run the Application](#6-run-the-application)
+      - [7. Access the Application](#7-access-the-application)
+  - [API Documentation](#api-documentation)
   - [Directory Structure](#directory-structure)
   - [Application Architecture](#application-architecture)
   - [Challenges and Learning Opportunities](#challenges-and-learning-opportunities)
 
 ## Introduction
 
-The **Secure Online Voting System** is a web application that allows users to participate in elections or polls securely and efficiently. The system ensures that each user can vote only once per election and that all votes are securely recorded and stored.
+The **Secure Voting System** is a web application that allows users to participate in elections or polls securely and efficiently. The system ensures that each user can vote only once per election and that all votes are securely recorded and stored.
 
 ## Features
 
@@ -85,35 +86,32 @@ The **Secure Online Voting System** is a web application that allows users to pa
 
 ### Steps
 
-1. **Clone the Repository**
+#### 1. Clone the Repository
 
 ```bash
-   git clone https://github.com/a6m1n0/Alx_Portfolio_Project.git
-
+git clone https://github.com/a6m1n0/Alx_Portfolio_Project.git
 ```
 
----
-
-## Navigate to the Project Directory
+#### 2. Navigate to the Project Directory
 
 ```bash
-cd secure_online_voting_system
+cd secure_voting_system
 ```
 
-## Create a Virtual Environment
+#### 3. Create a Virtual Environment
 
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 ```
 
-## Install Dependencies
+#### 4. Install Dependencies
 
 ```bash
 pip3 install -r requirements.txt
 ```
 
-## Initialize the Database
+#### 5. Initialize the Database
 
 Run the migrations to set up the database schema.
 
@@ -123,15 +121,28 @@ flask db migrate
 flask db upgrade
 ```
 
-## Run the Application
+#### 6. Run the Application
 
 ```bash
 flask run
 ```
 
-## Access the Application
+#### 7. Access the Application
 
 Navigate to `http://localhost:5000` in your web browser or use a tool like Postman to interact with the API endpoints.
+
+## API Documentation
+
+For detailed information on the API endpoints, request and response formats, refer to the [API Documentation](https://documenter.getpostman.com/view/38335007/2sAXqpA4eG).
+
+This documentation provides comprehensive details on how to interact with the Secure Voting System's RESTful API, including:
+
+- **Authentication Endpoints**: Registering new users, logging in, and token refresh.
+- **Election Management**: Creating, updating, and deleting elections (Admin only).
+- **Candidate Management**: Managing candidates for each election.
+- **Voting Endpoints**: Casting votes and retrieving voting status.
+- **Results Retrieval**: Accessing election results after voting has concluded.
+- **Audit Logs**: Monitoring system activities for security and transparency.
 
 ## Directory Structure
 
