@@ -12,7 +12,6 @@
     - [Election Management](#election-management)
     - [Vote Encryption](#vote-encryption)
     - [Results Calculation](#results-calculation)
-    - [Audit Log](#audit-log)
   - [Tech Stack](#tech-stack)
   - [Installation and Setup](#installation-and-setup)
     - [Prerequisites](#prerequisites)
@@ -65,10 +64,6 @@ The **Secure Voting System** is a web application that allows users to participa
 
 - **Automatic Tallying**: After an election ends, the system calculates and displays results.
 - **Access Control**: Results can be displayed publicly or restricted to certain roles.
-
-### Audit Log
-
-- **Activity Logging**: Maintains an audit log of all activities such as user logins, votes cast, and election management for transparency and security.
 
 ## Tech Stack
 
