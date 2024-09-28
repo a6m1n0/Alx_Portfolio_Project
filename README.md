@@ -52,7 +52,7 @@ The **Secure Voting System** is a web application that allows users to participa
 
 ### Election Management
 
-![alt text](https://github.com/a6m1n0/Alx_Portfolio_Project/blob/main/Screenshot%20from%202024-09-27%2011-18-57.png)
+![alt text](/a6m1n0/Alx_Portfolio_Project/blob/main/Screenshot%20from%202024-09-27%2011-18-57.png)
 
 https://github.com
 
